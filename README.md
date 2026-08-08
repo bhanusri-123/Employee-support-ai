@@ -67,7 +67,7 @@ The primary objectives of this project are:
 
 # 🔄 Project Workflow
 
-Employee Support AI follows a modular workflow orchestrated using **LangGraph**. Every user query passes through a sequence of processing stages, where the application determines the user's intent, routes the request to the appropriate service, and generates a user-friendly response.
+Employee Support AI follows a modular workflow orchestrated using **LangGraph**. Every user query passes through a sequence of processing stages where the application identifies the user's intent, routes the request to the appropriate execution path, and generates a conversational response.
 
 Depending on the detected intent, requests are either handled by one of the employee support services or forwarded to the Retrieval-Augmented Generation (RAG) pipeline for company policy queries.
 
@@ -78,11 +78,13 @@ Depending on the detected intent, requests are either handled by one of the empl
 ```mermaid
 flowchart LR
 
-    A[User Query] --> B[Hybrid Intent Detection]
+    A[User Query]
 
-    B --> C[Intent Router]
+    A --> B[Hybrid Intent Detection]
 
-    C -->|Employee Operations| D[Employee Services]
+    B --> C[Request Routing]
+
+    C -->|Employee Operations| D[Support Services]
 
     C -->|Policy Queries| E[RAG Pipeline]
 
@@ -90,47 +92,47 @@ flowchart LR
 
     E --> F
 
-    F --> G[Chat Response]
+    F --> G[Assistant Response]
 ```
 
-Every user request follows a common workflow. The query is first analyzed to determine its intent, after which it is routed either to an employee support service or to the RAG pipeline. Finally, the generated result is formatted before being displayed in the chat interface.
+Every user request follows a common execution path. The query is first analyzed to determine the user's intent before being routed to the appropriate service. Operational requests such as password reset, leave management, ticket handling, and profile retrieval are processed by the support services, while company policy questions are answered through the RAG pipeline. Finally, the generated result is formatted into a conversational response and displayed to the user.
 
 ---
 
 ## LangGraph Execution Workflow
 
-The application workflow is implemented using **LangGraph**, where each stage of execution is represented as an independent node. This modular approach makes the application easier to maintain and extend while allowing conditional routing based on the detected intent.
+The application workflow is orchestrated using **LangGraph**, where each processing stage is represented as an independent workflow node. This modular design enables conditional routing, improves maintainability, and allows new services to be integrated with minimal changes to the overall architecture.
 
 ```mermaid
 flowchart LR
 
-    START --> IntentNode["Intent Detection"]
+    START --> A[Intent Detection]
 
-    IntentNode -->|Policy Query| PolicyNode["Policy Node"]
+    A -->|Employee Operations| B[Tool Execution]
 
-    IntentNode -->|Other Intents| ToolNode["Tool Node"]
+    A -->|Policy Queries| C[Policy Retrieval]
 
-    ToolNode --> Formatter["Response Formatter"]
+    B --> D[Response Formatter]
 
-    PolicyNode --> Formatter
+    C --> D
 
-    Formatter --> END
+    D --> END
 ```
 
-### Workflow Nodes
+### Workflow Components
 
-| Node | Responsibility |
-|------|----------------|
-| Intent Detection | Detects the user's intent using the Hybrid Intent Detection module. |
-| Tool Node | Executes employee support operations such as password reset, leave management, profile retrieval, ticket management, greetings, and account unlock. |
-| Policy Node | Processes company policy queries through the RAG pipeline. |
-| Response Formatter | Converts structured tool outputs into user-friendly conversational responses. |
+| Component | Responsibility |
+|-----------|----------------|
+| Intent Detection | Identifies the user's intent using the Hybrid Intent Detection module. |
+| Tool Execution | Executes employee operations such as password reset, account unlock, leave management, profile retrieval, ticket management, greetings, and goodbye responses. |
+| Policy Retrieval | Processes company policy questions through the Retrieval-Augmented Generation (RAG) pipeline. |
+| Response Formatter | Converts structured outputs into user-friendly conversational responses before displaying them in the chat interface. |
 
 ---
 
 ## Hybrid Intent Detection Workflow
 
-The chatbot uses a hybrid intent detection strategy to balance execution speed with natural language understanding.
+To balance execution speed with natural language understanding, the chatbot follows a hybrid intent detection strategy. Common employee requests are handled using predefined rules, while unfamiliar or paraphrased queries are delegated to the Gemini LLM for intent classification.
 
 ```mermaid
 flowchart TD
@@ -145,17 +147,17 @@ flowchart TD
 
     D --> C
 
-    C --> E[Intent Router]
+    C --> E[Request Routing]
 ```
 
-### How it works
+### Intent Detection Process
 
-1. The user submits a query.
-2. The Rule-Based Intent Detector searches for predefined keywords and patterns.
-3. If a matching intent is found, the detected intent is returned immediately.
-4. If no suitable match exists, the query is forwarded to the Gemini LLM for intent classification.
-5. The detected intent is then passed to the Intent Router for execution.
+1. The user submits a query through the Streamlit interface.
+2. The Rule-Based Intent Detector searches for matching keywords and predefined patterns.
+3. If a matching intent is found, it is immediately returned.
+4. If no suitable rule is matched, the query is forwarded to the Gemini LLM for intent classification.
+5. The detected intent is then passed to the request routing stage for execution.
 
-This hybrid strategy minimizes unnecessary LLM calls while still supporting natural language and paraphrased queries.
+This hybrid strategy minimizes unnecessary LLM calls while still supporting natural language queries, paraphrased requests, and previously unseen user inputs.
 
 ---
