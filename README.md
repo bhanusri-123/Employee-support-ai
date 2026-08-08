@@ -2,7 +2,7 @@
 
 An AI-powered employee support assistant that simplifies common workplace operations through a conversational interface. The application enables employees to perform routine tasks such as password resets, leave management, ticket handling, employee profile retrieval, and company policy assistance from a single interface.
 
-The project combines **Hybrid Intent Detection**, **LangGraph**, and **Retrieval-Augmented Generation (RAG)** to intelligently process employee requests. Routine operations are handled using predefined tools, while policy-related questions are answered using a RAG pipeline powered by **Google Gemini**, **GoogleGenerativeAIEmbeddings**, and **FAISS**.
+The project combines **Hybrid Intent Detection**, **LangGraph**, and **Retrieval-Augmented Generation (RAG)** to intelligently process employee requests. Routine operations are handled using predefined tools, while policy-related questions are answered using a RAG pipeline powered by **Google Gemini** and **FAISS**.
 
 Built with a modular architecture, the application separates the user interface, workflow orchestration, business logic, and AI components, making it scalable, maintainable, and easy to extend with additional employee support services.
 
@@ -28,31 +28,24 @@ Built with a modular architecture, the application separates the user interface,
 ```mermaid
 flowchart TD
 
-A[Employee] --> B[Streamlit Chat Interface]
+    A[Employee] --> B[Streamlit Chat Interface]
 
-B --> C[LangGraph Workflow]
+    B --> C[LangGraph Workflow]
 
-C --> D[Hybrid Intent Detection]
+    C --> D[Hybrid Intent Detection]
 
-D -->|Rule-Based Match| E[Intent Router]
-D -->|LLM Fallback| F[Gemini Intent Classifier]
+    D -->|Rule-Based Match| E[Intent Router]
+    D -->|LLM Fallback| F[Gemini LLM]
 
-F --> E
+    F --> E
 
-E --> G[Employee Support Tools]
-E --> H[Policy Query]
+    E --> G[Employee Support Tools]
+    E --> H[RAG Pipeline]
 
-H --> I[RAG Pipeline]
+    G --> I[Response Formatter]
+    H --> I
 
-I --> J[GoogleGenerativeAIEmbeddings]
-J --> K[FAISS Vector Store]
-K --> L[Relevant Policy Documents]
-L --> M[Gemini Response]
-
-G --> N[Response Formatter]
-M --> N
-
-N --> O[Streamlit Response]
+    I --> J[Streamlit Response]
 ```
 
 ---
