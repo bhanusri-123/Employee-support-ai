@@ -161,3 +161,217 @@ flowchart TD
 This hybrid strategy minimizes unnecessary LLM calls while still supporting natural language queries, paraphrased requests, and previously unseen user inputs.
 
 ---
+
+# 📂 Repository Structure
+
+```text
+employee-support-ai/
+│
+├── chatbot/                  # Intent routing and response formatting
+├── data/                     # Mock employee data and company policies
+│   ├── policies/
+│   ├── employees.json
+│   ├── leave.json
+│   └── tickets.json
+│
+├── evaluation/               # Intent evaluation and performance metrics
+│
+├── graph/                    # LangGraph workflow definition and nodes
+│
+├── intents/                  # Rule-based and LLM-based intent detection
+│
+├── rag/                      # RAG pipeline, vector store, and document loader
+│
+├── services/                 # Business logic for employee operations
+│
+├── tests/                    # Test datasets and evaluation queries
+│
+├── tools/                    # Employee support tools
+│
+├── ui/                       # Streamlit user interface components
+│
+├── utils/                    # Helper functions and utilities
+│
+├── app.py                    # Streamlit application entry point
+├── config.py                 # Application configuration
+├── requirements.txt          # Project dependencies
+└── README.md
+```
+
+---
+
+# 🚀 Getting Started
+
+## Prerequisites
+
+Make sure the following software is installed before running the application.
+
+| Tool | Version |
+|------|---------|
+| Python | 3.11 or later |
+| pip | Latest version |
+| Git | Latest version |
+
+Verify the installation:
+
+```bash
+python --version
+pip --version
+git --version
+```
+
+---
+
+## 📥 Clone the Repository
+
+```bash
+git clone https://github.com/bhanusri-123/Employee-support-ai.git
+
+cd Employee-support-ai
+```
+
+---
+
+## 📦 Install Dependencies
+
+Create a virtual environment (recommended):
+
+### Linux / macOS
+
+```bash
+python -m venv .venv
+
+source .venv/bin/activate
+```
+
+### Windows
+
+```bash
+python -m venv .venv
+
+.venv\Scripts\activate
+```
+
+Install the required packages:
+
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+## ⚙️ Configure Environment Variables
+
+Create a `.env` file in the project root and add your Google Gemini API key.
+
+```env
+GOOGLE_API_KEY=your_api_key_here
+```
+
+---
+
+## ▶️ Run the Application
+
+Start the Streamlit application:
+
+```bash
+streamlit run app.py
+```
+
+By default, the application runs at:
+
+```
+http://localhost:8501
+```
+
+If Streamlit automatically selects another available port, open the URL displayed in the terminal.
+
+---
+
+## 💬 Sample Conversations
+
+The chatbot currently supports a variety of employee support requests.
+
+### Password Management
+
+```
+Reset my password
+
+I forgot my password
+
+Unlock my account
+
+I can't access my account
+```
+
+---
+
+### Leave Management
+
+```
+How many leave days do I have remaining?
+
+Apply for one day of annual leave
+
+I need a sick leave
+
+Show my leave balance
+```
+
+---
+
+### Employee Profile
+
+```
+Show my profile
+
+Who is my manager?
+
+What department do I work in?
+```
+
+---
+
+### Support Tickets
+
+```
+Create a support ticket
+
+Raise a new ticket
+
+Show my tickets
+
+List all my support requests
+```
+
+---
+
+### Company Policies
+
+```
+What is the work from home policy?
+
+Explain the leave policy.
+
+What does the travel policy say?
+
+Tell me about the insurance policy.
+```
+
+---
+
+### Greetings
+
+```
+Hello
+
+Hi
+
+Good Morning
+
+Bye
+
+Goodbye
+```
+
+---
