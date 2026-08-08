@@ -64,3 +64,98 @@ The primary objectives of this project are:
 - Build a modular and extensible architecture that can be expanded with additional employee support services.
 
 ---
+
+# 🔄 Project Workflow
+
+Employee Support AI follows a modular workflow orchestrated using **LangGraph**. Every user query passes through a sequence of processing stages, where the application determines the user's intent, routes the request to the appropriate service, and generates a user-friendly response.
+
+Depending on the detected intent, requests are either handled by one of the employee support services or forwarded to the Retrieval-Augmented Generation (RAG) pipeline for company policy queries.
+
+---
+
+## Overall System Workflow
+
+```mermaid
+flowchart LR
+
+    A[User Query] --> B[Hybrid Intent Detection]
+
+    B --> C[Intent Router]
+
+    C -->|Employee Operations| D[Employee Services]
+
+    C -->|Policy Queries| E[RAG Pipeline]
+
+    D --> F[Response Formatter]
+
+    E --> F
+
+    F --> G[Chat Response]
+```
+
+Every user request follows a common workflow. The query is first analyzed to determine its intent, after which it is routed either to an employee support service or to the RAG pipeline. Finally, the generated result is formatted before being displayed in the chat interface.
+
+---
+
+## LangGraph Execution Workflow
+
+The application workflow is implemented using **LangGraph**, where each stage of execution is represented as an independent node. This modular approach makes the application easier to maintain and extend while allowing conditional routing based on the detected intent.
+
+```mermaid
+flowchart LR
+
+    START --> IntentNode["Intent Detection"]
+
+    IntentNode -->|Policy Query| PolicyNode["Policy Node"]
+
+    IntentNode -->|Other Intents| ToolNode["Tool Node"]
+
+    ToolNode --> Formatter["Response Formatter"]
+
+    PolicyNode --> Formatter
+
+    Formatter --> END
+```
+
+### Workflow Nodes
+
+| Node | Responsibility |
+|------|----------------|
+| Intent Detection | Detects the user's intent using the Hybrid Intent Detection module. |
+| Tool Node | Executes employee support operations such as password reset, leave management, profile retrieval, ticket management, greetings, and account unlock. |
+| Policy Node | Processes company policy queries through the RAG pipeline. |
+| Response Formatter | Converts structured tool outputs into user-friendly conversational responses. |
+
+---
+
+## Hybrid Intent Detection Workflow
+
+The chatbot uses a hybrid intent detection strategy to balance execution speed with natural language understanding.
+
+```mermaid
+flowchart TD
+
+    A[User Query]
+
+    A --> B{Rule-Based Match?}
+
+    B -->|Yes| C[Detected Intent]
+
+    B -->|No| D[Gemini LLM]
+
+    D --> C
+
+    C --> E[Intent Router]
+```
+
+### How it works
+
+1. The user submits a query.
+2. The Rule-Based Intent Detector searches for predefined keywords and patterns.
+3. If a matching intent is found, the detected intent is returned immediately.
+4. If no suitable match exists, the query is forwarded to the Gemini LLM for intent classification.
+5. The detected intent is then passed to the Intent Router for execution.
+
+This hybrid strategy minimizes unnecessary LLM calls while still supporting natural language and paraphrased queries.
+
+---
