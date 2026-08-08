@@ -251,12 +251,11 @@ employee-support-ai/
 ---
 
 ---
-
 # 🚀 Getting Started
 
 ## Prerequisites
 
-Make sure the following software is installed before running the application.
+Before running the application, ensure the following software is installed on your system.
 
 | Tool | Version |
 |------|---------|
@@ -286,7 +285,7 @@ cd Employee-support-ai
 
 ## 📦 Install Dependencies
 
-Create a virtual environment (recommended):
+It is recommended to use a virtual environment.
 
 ### Linux / macOS
 
@@ -317,39 +316,51 @@ pip install -r requirements.txt
 Create a `.env` file in the project root and add your Google Gemini API key.
 
 ```env
-GOOGLE_API_KEY=your_api_key_here
+GOOGLE_API_KEY=your_google_gemini_api_key
 ```
 
 ---
 
 ## ▶️ Run the Application
 
-Start the Streamlit application:
+Launch the Streamlit application using:
 
 ```bash
 streamlit run app.py
 ```
 
-By default, the application runs at:
-
-```
-http://localhost:8501
-```
-
-If Streamlit automatically selects another available port, open the URL displayed in the terminal.
+After the server starts successfully, open the URL displayed in the terminal (typically `http://localhost:8501`) in your browser.
 
 ---
 
-## 💬 Sample Conversations
+# 💬 Sample Conversations
 
-The chatbot currently supports a variety of employee support requests.
+The chatbot currently supports the following employee operations.
 
-### Password Management
+### 👋 Greetings
 
+```text
+Hello
+
+Hi
+
+Good Morning
+
+Bye
+
+Goodbye
 ```
+
+---
+
+### 🔐 Password Management
+
+```text
 Reset my password
 
 I forgot my password
+
+Generate a temporary password
 
 Unlock my account
 
@@ -358,35 +369,39 @@ I can't access my account
 
 ---
 
-### Leave Management
+### 📅 Leave Management
 
-```
+```text
 How many leave days do I have remaining?
+
+Show my leave balance
 
 Apply for one day of annual leave
 
 I need a sick leave
 
-Show my leave balance
+Apply leave
 ```
 
 ---
 
-### Employee Profile
+### 👤 Employee Profile
 
-```
+```text
 Show my profile
 
 Who is my manager?
 
 What department do I work in?
+
+Show my employee details
 ```
 
 ---
 
-### Support Tickets
+### 🎫 Ticket Management
 
-```
+```text
 Create a support ticket
 
 Raise a new ticket
@@ -398,9 +413,9 @@ List all my support requests
 
 ---
 
-### Company Policies
+### 📚 Company Policies
 
-```
+```text
 What is the work from home policy?
 
 Explain the leave policy.
@@ -408,22 +423,73 @@ Explain the leave policy.
 What does the travel policy say?
 
 Tell me about the insurance policy.
+
+What is the office policy?
 ```
 
 ---
 
-### Greetings
+# 🧰 Technology Stack
 
+| Layer | Technology |
+|--------|------------|
+| Programming Language | Python |
+| User Interface | Streamlit |
+| Workflow Orchestration | LangGraph |
+| Intent Detection | Rule-Based Matching + Google Gemini |
+| LLM | Google Gemini |
+| Embedding Model | GoogleGenerativeAIEmbeddings (`models/gemini-embedding-001`) |
+| Framework | LangChain |
+| Vector Store | FAISS |
+| Data Storage | JSON |
+| Environment Management | python-dotenv |
+
+---
+
+# 📊 Evaluation
+
+The project includes an evaluation module to measure the effectiveness of the Hybrid Intent Detection pipeline.
+
+The evaluation is performed using a predefined test dataset containing employee support queries, paraphrased requests, and policy-related questions.
+
+### Evaluation Metrics
+
+| Metric | Description |
+|--------|-------------|
+| Accuracy | Percentage of correctly classified intents |
+| Rule-Based Queries | Number of queries handled using rule-based detection |
+| LLM Queries | Number of queries classified using Gemini |
+| Average Confidence | Mean confidence score of predicted intents |
+| Average Response Time | Average processing time per query |
+
+Run the evaluation using:
+
+```bash
+python -m evaluation.report
 ```
-Hello
 
-Hi
+---
 
-Good Morning
+# 🔮 Future Scope
 
-Bye
+The current implementation provides a foundation for an AI-powered employee support platform. Future enhancements may include:
 
-Goodbye
-```
+- Multi-user authentication and role-based access
+- Integration with enterprise HR and IT systems
+- Persistent database support (PostgreSQL/MySQL)
+- Real-time ticket tracking
+- Voice-based interactions
+- Conversation history and context-aware responses
+- Deployment using Docker and cloud platforms
+- Admin dashboard for managing employees, policies, and tickets
+
+---
+
+# 👩‍💻 Author
+
+**Venigalla Bhanusri**
+
+GitHub: https://github.com/bhanusri-123
+
 
 ---
