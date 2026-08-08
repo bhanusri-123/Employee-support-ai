@@ -161,42 +161,94 @@ flowchart TD
 This hybrid strategy minimizes unnecessary LLM calls while still supporting natural language queries, paraphrased requests, and previously unseen user inputs.
 
 ---
-
 # 📂 Repository Structure
 
 ```text
 employee-support-ai/
 │
 ├── chatbot/                  # Intent routing and response formatting
-├── data/                     # Mock employee data and company policies
-│   ├── policies/
+│   ├── intent_router.py
+│   └── response_formatter.py
+│
+├── data/                     # Employee data and company policy documents
 │   ├── employees.json
 │   ├── leave.json
-│   └── tickets.json
+│   ├── tickets.json
+│   └── policies/
+│       ├── insurance_policy.txt
+│       ├── leave_policy.txt
+│       ├── office_policy.txt
+│       ├── travel_policy.txt
+│       └── wfh_policy.txt
 │
-├── evaluation/               # Intent evaluation and performance metrics
+├── evaluation/               # Evaluation framework and test dataset
+│   ├── evaluator.py
+│   ├── metrics.py
+│   ├── report.py
+│   └── test_dataset.json
 │
-├── graph/                    # LangGraph workflow definition and nodes
+├── graph/                    # LangGraph workflow implementation
+│   ├── graph_builder.py
+│   ├── nodes.py
+│   ├── state.py
+│   └── workflow.py
 │
-├── intents/                  # Rule-based and LLM-based intent detection
+├── intents/                  # Hybrid intent detection
+│   ├── hybrid.py
+│   ├── keywords.py
+│   ├── llm_classifier.py
+│   ├── matcher.py
+│   ├── normalizer.py
+│   ├── parser.py
+│   ├── prompt.py
+│   └── rule_based.py
 │
-├── rag/                      # RAG pipeline, vector store, and document loader
+├── rag/                      # Retrieval-Augmented Generation pipeline
+│   ├── loader.py
+│   ├── rag_chain.py
+│   ├── retriever.py
+│   └── vector_store.py
 │
-├── services/                 # Business logic for employee operations
+├── services/                 # Business logic layer
+│   ├── employee_service.py
+│   ├── leave_service.py
+│   └── ticket_service.py
 │
-├── tests/                    # Test datasets and evaluation queries
+├── tests/                    # Unit and workflow tests
+│   ├── test_graph.py
+│   ├── test_hybrid.py
+│   ├── test_rag.py
+│   ├── test_router.py
+│   └── test_rule_based.py
 │
 ├── tools/                    # Employee support tools
+│   ├── employee_tools.py
+│   ├── greeting_tool.py
+│   ├── goodbye_tool.py
+│   ├── leave_tool.py
+│   ├── password_tool.py
+│   ├── policy_tool.py
+│   ├── profile_tool.py
+│   ├── registry.py
+│   └── ticket_tool.py
 │
-├── ui/                       # Streamlit user interface components
+├── ui/                       # Streamlit UI components
+│   ├── chat.py
+│   ├── components.py
+│   ├── sidebar.py
+│   └── styles.py
 │
-├── utils/                    # Helper functions and utilities
+├── utils/                    # Utility functions
+│   ├── data_loader.py
+│   └── response.py
 │
 ├── app.py                    # Streamlit application entry point
 ├── config.py                 # Application configuration
 ├── requirements.txt          # Project dependencies
 └── README.md
 ```
+
+---
 
 ---
 
