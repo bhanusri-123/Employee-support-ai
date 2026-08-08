@@ -160,6 +160,38 @@ flowchart TD
 This hybrid strategy minimizes unnecessary LLM calls while still supporting natural language queries, paraphrased requests, and previously unseen user inputs.
 
 ---
+
+## 📚 RAG Workflow
+
+Policy-related queries are answered using a **Retrieval-Augmented Generation (RAG)** pipeline. Instead of relying solely on the language model's internal knowledge, the application retrieves relevant company policy documents from a FAISS vector store and provides them as contextual information to the Gemini LLM before generating a response.
+
+```mermaid
+flowchart LR
+
+    A[Policy Query]
+
+    A --> B[Retriever]
+
+    B --> C[FAISS Vector Store]
+
+    C --> D[Relevant Policy Documents]
+
+    D --> E[Gemini LLM]
+
+    E --> F[Policy Response]
+```
+
+### RAG Process
+
+1. The user submits a company policy query.
+2. The retriever performs semantic similarity search on the FAISS vector store.
+3. The most relevant policy documents are retrieved.
+4. Retrieved policy documents are provided as context to the Gemini LLM.
+5. The generated response is returned to the Response Formatter before being displayed to the user.
+
+---
+
+
 # 📂 Repository Structure
 
 ```text
@@ -248,6 +280,25 @@ employee-support-ai/
 ```
 
 ---
+
+## 📁 Project Organization
+
+The project follows a modular architecture where each package is responsible for a specific layer of the application, making the codebase easier to understand, maintain, and extend.
+
+| Directory | Purpose |
+|-----------|---------|
+| `graph/` | Defines the LangGraph workflow and request routing logic. |
+| `intents/` | Implements hybrid intent detection using rule-based matching with Gemini LLM fallback. |
+| `tools/` | Contains the employee support tools executed after intent detection. |
+| `services/` | Implements the business logic behind employee operations. |
+| `rag/` | Handles document retrieval and policy question answering using RAG. |
+| `ui/` | Contains the Streamlit user interface components. |
+| `evaluation/` | Evaluates chatbot performance using predefined test datasets. |
+| `data/` | Stores employee records, leave balances, tickets, and policy documents. |
+
+---
+
+
 # 🚀 Getting Started
 
 ## Prerequisites
@@ -411,7 +462,7 @@ What is the office policy?
 | Programming Language | Python |
 | User Interface | Streamlit |
 | Workflow Orchestration | LangGraph |
-| Intent Detection | Rule-Based Matching + Google Gemini |
+| Intent Detection | Hybrid (Rule-Based + LLM) |
 | LLM | Google Gemini |
 | Framework | LangChain |
 | Vector Store | FAISS |
@@ -446,16 +497,17 @@ python -m evaluation.report
 
 # 🔮 Future Scope
 
-The current implementation provides a foundation for an AI-powered employee support platform. Future enhancements may include:
+The current implementation provides a strong foundation for an AI-powered employee support platform. Future enhancements may include:
 
 - Multi-user authentication and role-based access
 - Integration with enterprise HR and IT systems
 - Persistent database support (PostgreSQL/MySQL)
-- Real-time ticket tracking
-- Voice-based interactions
+- Dynamic policy document management
 - Conversation history and context-aware responses
-- Deployment using Docker and cloud platforms
-- Admin dashboard for managing employees, policies, and tickets
+- Real-time ticket tracking
+- Deployment using Docker
+- Cloud deployment
+- Administrative dashboard for managing employees, policies, and tickets
 
 ---
 
