@@ -22,7 +22,6 @@ Built with a modular architecture, the application separates the user interface,
 | 🔄 LangGraph Workflow | Routes requests through modular workflow nodes for execution and response generation. |
 
 ---
-
 ## 🏗️ System Architecture
 
 ```mermaid
@@ -34,19 +33,23 @@ flowchart TD
 
     C --> D[Hybrid Intent Detection]
 
-    D --> E[Intent Router]
+    D -->|Rule-Based Match| E[Intent Router]
+    D -.->|LLM Fallback| F[Gemini LLM]
 
-    D -. LLM Fallback .-> F[Gemini LLM]
-    F --> D
+    F --> E
 
-    E --> G[Employee Support Tools]
+    E --> G[Support Services]
     E --> H[RAG Pipeline]
 
     G --> I[Response Formatter]
     H --> I
 
-    I --> J[Streamlit Chat Interface]
+    I --> J[User Response]
 ```
+
+The Employee Support AI follows a modular architecture where every user request is processed through a LangGraph workflow. User queries are first analyzed using a hybrid intent detection strategy. Requests that match predefined patterns are handled directly, while paraphrased or unseen requests are forwarded to the Gemini LLM for intent classification. Once the intent is identified, the Intent Router directs the request either to the appropriate support service or to the RAG pipeline for policy-related queries. Finally, the Response Formatter converts the output into a user-friendly response that is displayed in the Streamlit chat interface.
+
+---
 
 ---
 
