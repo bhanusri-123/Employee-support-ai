@@ -1,0 +1,211 @@
+[
+    {
+        "query": "Hello",
+        "expected_intent": "greeting"
+    },
+    {
+        "query": "Hi",
+        "expected_intent": "greeting"
+    },
+    {
+        "query": "Good morning",
+        "expected_intent": "greeting"
+    },
+    {
+        "query": "Hey there",
+        "expected_intent": "greeting"
+    },
+
+    {
+        "query": "Reset my password",
+        "expected_intent": "password_reset"
+    },
+    {
+        "query": "I forgot my password",
+        "expected_intent": "password_reset"
+    },
+    {
+        "query": "Change my password",
+        "expected_intent": "password_reset"
+    },
+    {
+        "query": "Need a new password",
+        "expected_intent": "password_reset"
+    },
+    {
+        "query": "Help me reset my login password",
+        "expected_intent": "password_reset"
+    },
+    {
+        "query": "Password reset please",
+        "expected_intent": "password_reset"
+    },
+
+    {
+        "query": "Unlock my account",
+        "expected_intent": "account_unlock"
+    },
+    {
+        "query": "My account is locked",
+        "expected_intent": "account_unlock"
+    },
+    {
+        "query": "Please unlock my login",
+        "expected_intent": "account_unlock"
+    },
+    {
+        "query": "Can't access my account",
+        "expected_intent": "account_unlock"
+    },
+
+    {
+        "query": "How many leave days are remaining?",
+        "expected_intent": "leave_balance"
+    },
+    {
+        "query": "Show my leave balance",
+        "expected_intent": "leave_balance"
+    },
+    {
+        "query": "Remaining leave",
+        "expected_intent": "leave_balance"
+    },
+    {
+        "query": "How much leave do I have?",
+        "expected_intent": "leave_balance"
+    },
+    {
+        "query": "Available leave balance",
+        "expected_intent": "leave_balance"
+    },
+
+    {
+        "query": "Apply leave",
+        "expected_intent": "apply_leave"
+    },
+    {
+        "query": "Apply leave tomorrow",
+        "expected_intent": "apply_leave"
+    },
+    {
+        "query": "I want to take leave",
+        "expected_intent": "apply_leave"
+    },
+    {
+        "query": "Request leave",
+        "expected_intent": "apply_leave"
+    },
+    {
+        "query": "Submit leave request",
+        "expected_intent": "apply_leave"
+    },
+
+    {
+        "query": "Show my employee profile",
+        "expected_intent": "employee_profile"
+    },
+    {
+        "query": "Show my profile",
+        "expected_intent": "employee_profile"
+    },
+    {
+        "query": "Employee details",
+        "expected_intent": "employee_profile"
+    },
+    {
+        "query": "View my information",
+        "expected_intent": "employee_profile"
+    },
+
+    {
+        "query": "Show my tickets",
+        "expected_intent": "list_tickets"
+    },
+    {
+        "query": "List my tickets",
+        "expected_intent": "list_tickets"
+    },
+    {
+        "query": "Open tickets",
+        "expected_intent": "list_tickets"
+    },
+    {
+        "query": "View support tickets",
+        "expected_intent": "list_tickets"
+    },
+
+    {
+        "query": "Raise a ticket",
+        "expected_intent": "create_ticket"
+    },
+    {
+        "query": "Create a support ticket",
+        "expected_intent": "create_ticket"
+    },
+    {
+        "query": "Open a ticket",
+        "expected_intent": "create_ticket"
+    },
+    {
+        "query": "Report an issue",
+        "expected_intent": "create_ticket"
+    },
+
+    {
+        "query": "What is the WFH policy?",
+        "expected_intent": "policy_query"
+    },
+    {
+        "query": "Explain the leave policy",
+        "expected_intent": "policy_query"
+    },
+    {
+        "query": "Tell me the insurance policy",
+        "expected_intent": "policy_query"
+    },
+    {
+        "query": "Travel policy",
+        "expected_intent": "policy_query"
+    },
+    {
+        "query": "Office policy",
+        "expected_intent": "policy_query"
+    },
+    {
+        "query": "Can I work from home?",
+        "expected_intent": "policy_query"
+    },
+    {
+        "query": "Tell me about company policies",
+        "expected_intent": "policy_query"
+    },
+
+    {
+        "query": "Generate my salary slip",
+        "expected_intent": "unknown"
+    },
+    {
+        "query": "How do I update my bank account?",
+        "expected_intent": "unknown"
+    },
+    {
+        "query": "I need help with something",
+        "expected_intent": "unknown"
+    },
+    {
+        "query": "Can you book a meeting room?",
+        "expected_intent": "unknown"
+    },
+    {
+        "query": "Order a new laptop",
+        "expected_intent": "unknown"
+    },
+    {
+        "query": "What is artificial intelligence?",
+        "expected_intent": "unknown"
+    },
+    {
+        "query": "Tell me a joke",
+        "expected_intent": "unknown"
+    }
+]

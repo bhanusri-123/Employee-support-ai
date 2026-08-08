@@ -1,0 +1,12 @@
+[
+    {
+        "employee_id": "EMP001",
+        "name": "Venigalla Bhanusri",
+        "email": "venigalla.bhanusri@company.com",
+        "department": "Software Engineering",
+        "designation": "Software Engineer",
+        "manager": "Sarah Johnson",
+        "location": "Hyderabad",
+        "phone": "+91-9876543210"
+    }
+]

@@ -1,0 +1,8 @@
+[
+    {
+        "employee_id": "EMP001",
+        "annual_leave": 13,
+        "casual_leave": 7,
+        "sick_leave": 7
+    }
+]
