@@ -338,13 +338,9 @@ The chatbot currently supports the following employee operations.
 
 ```text
 Hello
-
 Hi
-
 Good Morning
-
 Bye
-
 Goodbye
 ```
 
@@ -354,13 +350,9 @@ Goodbye
 
 ```text
 Reset my password
-
 I forgot my password
-
 Generate a temporary password
-
 Unlock my account
-
 I can't access my account
 ```
 
@@ -370,13 +362,9 @@ I can't access my account
 
 ```text
 How many leave days do I have remaining?
-
 Show my leave balance
-
 Apply for one day of annual leave
-
 I need a sick leave
-
 Apply leave
 ```
 
@@ -386,11 +374,8 @@ Apply leave
 
 ```text
 Show my profile
-
 Who is my manager?
-
 What department do I work in?
-
 Show my employee details
 ```
 
@@ -400,11 +385,8 @@ Show my employee details
 
 ```text
 Create a support ticket
-
 Raise a new ticket
-
 Show my tickets
-
 List all my support requests
 ```
 
@@ -414,13 +396,9 @@ List all my support requests
 
 ```text
 What is the work from home policy?
-
 Explain the leave policy.
-
 What does the travel policy say?
-
 Tell me about the insurance policy.
-
 What is the office policy?
 ```
 
@@ -435,7 +413,6 @@ What is the office policy?
 | Workflow Orchestration | LangGraph |
 | Intent Detection | Rule-Based Matching + Google Gemini |
 | LLM | Google Gemini |
-| Embedding Model | GoogleGenerativeAIEmbeddings (`models/gemini-embedding-001`) |
 | Framework | LangChain |
 | Vector Store | FAISS |
 | Data Storage | JSON |
