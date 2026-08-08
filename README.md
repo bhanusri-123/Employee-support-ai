@@ -51,7 +51,6 @@ The Employee Support AI follows a modular architecture where every user request 
 
 ---
 
----
 
 ## 🎯 Objectives
 
@@ -247,8 +246,6 @@ employee-support-ai/
 ├── requirements.txt          # Project dependencies
 └── README.md
 ```
-
----
 
 ---
 # 🚀 Getting Started
