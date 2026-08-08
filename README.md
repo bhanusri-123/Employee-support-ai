@@ -34,10 +34,10 @@ flowchart TD
 
     C --> D[Hybrid Intent Detection]
 
-    D -->|Rule-Based Match| E[Intent Router]
-    D -->|LLM Fallback| F[Gemini LLM]
+    D --> E[Intent Router]
 
-    F --> E
+    D -. LLM Fallback .-> F[Gemini LLM]
+    F --> D
 
     E --> G[Employee Support Tools]
     E --> H[RAG Pipeline]
@@ -45,7 +45,7 @@ flowchart TD
     G --> I[Response Formatter]
     H --> I
 
-    I --> J[Streamlit Response]
+    I --> J[Streamlit Chat Interface]
 ```
 
 ---
