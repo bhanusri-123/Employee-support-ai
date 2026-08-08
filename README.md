@@ -1,5 +1,13 @@
 # 🤖 Employee Support AI
 
+![Python](https://img.shields.io/badge/Python-3.11-blue)
+
+![Streamlit](https://img.shields.io/badge/Streamlit-App-red)
+
+![LangGraph](https://img.shields.io/badge/LangGraph-Workflow-green)
+
+![License](https://img.shields.io/badge/License-MIT-yellow)
+
 An AI-powered employee support assistant that simplifies common workplace operations through a conversational interface. The application enables employees to perform routine tasks such as password resets, leave management, ticket handling, employee profile retrieval, and company policy assistance from a single interface.
 
 The project combines **Hybrid Intent Detection**, **LangGraph**, and **Retrieval-Augmented Generation (RAG)** to intelligently process employee requests. Routine operations are handled using predefined tools, while policy-related questions are answered using a RAG pipeline powered by **Google Gemini** and **FAISS**.
@@ -38,7 +46,7 @@ flowchart TD
 
     F --> E
 
-    E --> G[Support Services]
+    E --> G[Employee Services]
     E --> H[RAG Pipeline]
 
     G --> I[Response Formatter]
