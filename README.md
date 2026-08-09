@@ -495,6 +495,21 @@ python -m evaluation.report
 
 ---
 
+## 📊 Evaluation Results
+
+The current evaluation produced the following results:
+
+| Metric                      |         Result |
+| --------------------------- | -------------: |
+| **Accuracy**                |      **96.0%** |
+| **Rule-Based Queries**      |         **32** |
+| **LLM Queries**             |         **18** |
+| **Average Confidence**      |     **59.24%** |
+| **Average Processing Time** | **0.3621 sec** |
+
+
+---
+
 # 🔮 Future Scope
 
 The current implementation provides a strong foundation for an AI-powered employee support platform. Future enhancements may include:
