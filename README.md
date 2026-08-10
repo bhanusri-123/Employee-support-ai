@@ -501,11 +501,11 @@ The current evaluation produced the following results:
 
 | Metric                      |         Result |
 | --------------------------- | -------------: |
-| **Accuracy**                |      **96.0%** |
+| **Accuracy**                |      **98.0%** |
 | **Rule-Based Queries**      |         **32** |
 | **LLM Queries**             |         **18** |
-| **Average Confidence**      |     **59.24%** |
-| **Average Processing Time** | **0.3621 sec** |
+| **Average Confidence**      |     **57.62%** |
+| **Average Processing Time** | **1.3357 sec** |
 
 
 ---
